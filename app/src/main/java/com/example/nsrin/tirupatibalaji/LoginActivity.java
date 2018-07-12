@@ -3,6 +3,7 @@ package com.example.nsrin.tirupatibalaji;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -173,10 +174,14 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(result);
             //Store the value in SQLITE database.
             String json_result[]=result.split("--");
-
-            if(json_result[1]=="200") {
+            if(json_result[1].contains("200")) {
+                //showToastMessage(json_result[0].toString());
+                Intent myIntent = new Intent(LoginActivity.this, ProfileActivity.class);
+                myIntent.putExtra("user_data", json_result[0].toString()); //Optional parameters
+                LoginActivity.this.startActivity(myIntent);
+                startActivity(myIntent);
                 pd.dismiss();
-                showToastMessage(json_result[0].toString());
+
             }else {
                 pd.dismiss();
                 ShowLoginError(json_result[0].toString());
