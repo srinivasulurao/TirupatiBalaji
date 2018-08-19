@@ -1,8 +1,14 @@
 package com.example.nsrin.tirupatibalaji;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,11 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
+import android.widget.Toast;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements CommonListingFragment.OnFragmentInteractionListener {
 
     private DrawerLayout pdl;
     private ActionBarDrawerToggle drawerToggle;
+    FragmentStatePagerAdapter pager_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +42,48 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+
+        //Now do the setting for tabs.
+        TabLayout tab_layout=findViewById(R.id.tab_layout);
+
+        tab_layout.addTab(tab_layout.newTab().setText("PHP"));
+        tab_layout.addTab(tab_layout.newTab().setText("MySQL"));
+        tab_layout.addTab(tab_layout.newTab().setText("JavaScript"));
+        tab_layout.addTab(tab_layout.newTab().setText("Android"));
+        tab_layout.addTab(tab_layout.newTab().setText("Ionic"));
+        tab_layout.addTab(tab_layout.newTab().setText("RightNow"));
+        tab_layout.addTab(tab_layout.newTab().setText("C#"));
+        tab_layout.addTab(tab_layout.newTab().setText("HTML"));
+        tab_layout.addTab(tab_layout.newTab().setText("CSS"));
+        tab_layout.addTab(tab_layout.newTab().setText("Interesting Facts"));
+        tab_layout.setTabGravity(TabLayout.MODE_SCROLLABLE);
+
+        ViewPager view_pager= findViewById(R.id.tab_pager);
+        pager_adapter= new com.example.nsrin.tirupatibalaji.PagerAdapter(getSupportFragmentManager(),tab_layout.getTabCount());
+        view_pager.setAdapter(pager_adapter);
+
+        view_pager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab_layout));
+        tab_layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                ViewPager view_pager= findViewById(R.id.tab_pager);
+                view_pager.setCurrentItem(tab.getPosition());  //Fantastic, this works like a charm, thanks god.
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
     }
 
     @Override
-
     public boolean onOptionsItemSelected(MenuItem item){
 
         if(drawerToggle.onOptionsItemSelected(item)){
@@ -47,4 +94,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

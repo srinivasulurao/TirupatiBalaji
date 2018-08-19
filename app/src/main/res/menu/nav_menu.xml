@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_draw"
-    >
+    tools:showIn="navigation_draw">
 
-    <group android:checkableBehavior="single">
-        <item android:id="@+id/home"
-            android:title="My Profile">
+    <item android:title="Profile Details">
+    <menu>
+        <item android:id="@+id/my_account"
+            android:icon="@drawable/ic_menu_send"
+            android:title="My Account">
         </item>
 
+        <item android:id="@+id/change_password"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Change Password" />
+
+        <item android:id="@+id/logout"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Log Out" />
+    </menu>
+    </item>
+
+    <group>
         <item android:id="@+id/about_me"
-            android:title="About Home">
+            android:icon="@drawable/ic_menu_manage"
+            android:title="About Me">
         </item>
 
         <item android:id="@+id/contact_me"
+            android:icon="@drawable/ic_menu_gallery"
             android:title="Contact Me">
         </item>
+
+        <item android:id="@+id/terms_and_conditions"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Terms and Conditions">
+        </item>
     </group>
-
-    <item android:id="@+id/terms_and_conditions"
-        android:title="Terms and Conditions"
-        >
-
-    </item>
 
 </menu>
