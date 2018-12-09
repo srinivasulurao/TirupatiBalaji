@@ -1,7 +1,10 @@
 package com.example.nsrin.tirupatibalaji;
 
+import android.content.ClipData;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -21,7 +24,7 @@ import android.view.MenuItem;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
-public class ProfileActivity extends AppCompatActivity implements CommonListingFragment.OnFragmentInteractionListener {
+public class ProfileActivity extends AppCompatActivity implements CommonListingFragment.OnFragmentInteractionListener{
 
     private DrawerLayout pdl;
     private ActionBarDrawerToggle drawerToggle;
@@ -42,8 +45,33 @@ public class ProfileActivity extends AppCompatActivity implements CommonListingF
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        //#################################################
+        //Do something when  Navigation item is selected
+        //#################################################
+        NavigationView navigationView=findViewById(R.id.navigation_drawer_container);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int ndmi=item.getItemId();
+                if(ndmi==R.id.logout){
+                    Intent il=new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(il);
+                }
+                if(ndmi==R.id.contact_me){
+                    Intent ic=new Intent(ProfileActivity.this, ContactMe.class);
+                    startActivity(ic);
+                }
 
+                if(ndmi==R.id.about_me){
+                    Intent iam=new Intent(ProfileActivity.this,AboutMe.class);
+                    startActivity(iam);
+                }
+                return false;
+            }
+        });
+        //##################################################
         //Now do the setting for tabs.
+        //##################################################
         TabLayout tab_layout=findViewById(R.id.tab_layout);
 
         tab_layout.addTab(tab_layout.newTab().setText("PHP"));
@@ -98,4 +126,5 @@ public class ProfileActivity extends AppCompatActivity implements CommonListingF
     public void onFragmentInteraction(Uri uri) {
 
     }
+
 }

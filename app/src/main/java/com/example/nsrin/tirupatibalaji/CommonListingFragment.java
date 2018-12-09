@@ -1,5 +1,6 @@
 package com.example.nsrin.tirupatibalaji;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -57,6 +58,7 @@ public class CommonListingFragment extends Fragment {
     ArrayList DescriptionList;
     ArrayList TitleList;
     ArrayList ArticleListID;
+    ProgressDialog pd;
 
     private OnFragmentInteractionListener mListener;
 
@@ -103,9 +105,9 @@ public class CommonListingFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         //Toast.makeText(getActivity(),"Item Clicked"+id,Toast.LENGTH_LONG).show();
-                        // go to different intent.
+                        //go to different intent.
                         Intent intent = new Intent(fragment_view.getContext(),ViewArticle.class);
-                        //intent.putExtra("nid", id);
+                        intent.putExtra("nid",String.valueOf(id));
                         startActivity(intent);
                     }
                 });
@@ -116,6 +118,12 @@ public class CommonListingFragment extends Fragment {
     private class ArticlesFetcher extends  AsyncTask<String, String, String> { //Minimum Three parameters are required.
 
         //Just methods are required in AsyncTask, such a fantastic thing in java.
+
+        @Override
+        protected void onPreExecute() {
+
+
+        }
 
         @Override
         protected String doInBackground(String... params) {
@@ -201,7 +209,6 @@ public class CommonListingFragment extends Fragment {
 //            ListView listView = fragment_view.findViewById(R.id.article_list);
 //            listView.setAdapter(custom_adapter);
 
-
         } //Post Execute ends here.
     }
 
@@ -261,7 +268,7 @@ public class CommonListingFragment extends Fragment {
         // Inflate the layout for this fragment
        View view=inflater.inflate(R.layout.fragment_common_listing, container, false);
        this.fragment_view=view;
-       new ArticlesFetcher().execute(getString(R.string.mobile_api)+"/php");
+       new ArticlesFetcher().execute("http://srinivasulurao.com/mobile-api/php");
        return view;
 
     }

@@ -24,11 +24,19 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.WithActionBar" />
+        <activity
+            android:name=".ViewArticle"
+            android:label="View Article"
+            android:theme="@style/AppTheme.WithActionBar"/>
+        <activity
+            android:name=".ContactMe"
+            android:label="Contact Me"
+            android:theme="@style/AppTheme.WithActionBar" />
+        <activity
+            android:name=".AboutMe"
+            android:label="About Me"
             android:theme="@style/AppTheme.WithActionBar"></activity>
-
-        <activity android:name=".ViewArticle"
-            android:parentActivityName=".ProfileActivity">
-        </activity>
     </application>
 
 </manifest>

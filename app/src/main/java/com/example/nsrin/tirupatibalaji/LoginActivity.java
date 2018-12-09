@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -177,6 +178,7 @@ public class LoginActivity extends AppCompatActivity {
             String json_result[]=result.split("--");
             if(json_result[1].contains("200")) {
                 //showToastMessage(json_result[0].toString());
+                Log.d("login_Data",json_result[0].toString());
                 Intent myIntent = new Intent(LoginActivity.this, ProfileActivity.class);
                 myIntent.putExtra("user_data", json_result[0].toString()); //Optional parameters
                 LoginActivity.this.startActivity(myIntent);
