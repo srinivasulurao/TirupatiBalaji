@@ -43,7 +43,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if(result==-1)
             return false;
-        else 
+        else
             return true;
+    }
+
+    public boolean updateData(String username, String password, String csrf_token, String logout_token){
+
     }
 }
