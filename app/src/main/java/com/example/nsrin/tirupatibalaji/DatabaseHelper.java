@@ -48,6 +48,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean updateData(String username, String password, String csrf_token, String logout_token){
-
+return true;
     }
 }

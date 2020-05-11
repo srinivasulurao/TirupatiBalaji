@@ -76,6 +76,7 @@ public class ProfileActivity extends AppCompatActivity implements CommonListingF
 
         tab_layout.addTab(tab_layout.newTab().setText("PHP"));
         tab_layout.addTab(tab_layout.newTab().setText("MySQL"));
+        tab_layout.addTab(tab_layout.newTab().setText("Angular"));
         tab_layout.addTab(tab_layout.newTab().setText("JavaScript"));
         tab_layout.addTab(tab_layout.newTab().setText("Android"));
         tab_layout.addTab(tab_layout.newTab().setText("Ionic"));

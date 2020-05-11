@@ -31,7 +31,7 @@ import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
 
-    ProgressDialog pd;
+    ProgressDialog pd; //this is the dialog or alert box in android.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                 return "Padmavati";
 
             } catch (IOException ex) {
-
+                Log.d("login_error", ex.toString());
                return "Tirupati";
 
             } finally {
@@ -166,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
                 builder.show();
             } catch (JSONException e) {
+                Log.d("login_error", e.toString());
                 e.printStackTrace();
             }
 
@@ -175,7 +176,9 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             //Store the value in SQLITE database.
+
             String json_result[]=result.split("--");
+
             if(json_result[1].contains("200")) {
                 //showToastMessage(json_result[0].toString());
                 Log.d("login_Data",json_result[0].toString());
@@ -187,7 +190,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }else {
                 pd.dismiss();
-                ShowLoginError(json_result[0].toString());
+                ShowLoginError(json_result[0].toString()); 
             }
 
 
@@ -238,13 +241,15 @@ public class LoginActivity extends AppCompatActivity {
                 while ((line = bufferedReader.readLine()) != null) {
                     access_token.append(line);
                 }
-
+                Log.d("access_token", access_token.toString());
                 return access_token.toString();
 
             } catch (MalformedURLException ex){
+                Log.d("access_token", ex.toString());
                 ex.printStackTrace();
             }
             catch (IOException ex){
+                Log.d("access_token", ex.toString());
                 ex.printStackTrace();
             }finally {
                 if(httpURLConnection !=null)

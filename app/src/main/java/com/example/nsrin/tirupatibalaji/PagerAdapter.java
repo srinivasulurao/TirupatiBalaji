@@ -4,6 +4,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
+import android.widget.Toast;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
@@ -19,7 +21,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         clf=new CommonListingFragment();
-        clf.mParam1=String.valueOf(position);
+        clf.mParam1=position;
         return clf;
     }
 

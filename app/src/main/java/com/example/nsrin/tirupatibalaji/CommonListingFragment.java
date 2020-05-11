@@ -50,9 +50,9 @@ public class CommonListingFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    public String mParam1;
+    public int mParam1;
     public int mParam2=0;
-    String articles[]={"php", "mysql","javascript","android","ionic","rightnow","c-sharp","html","css","interesting-facts"};
+    String articles[]={"php","mysql","angular","javascript","android","ionic","rightnow","c-sharp","html","css","interesting-facts"};
     public View fragment_view;
     ArrayList ImageList;
     ArrayList DescriptionList;
@@ -169,6 +169,8 @@ public class CommonListingFragment extends Fragment {
 
             try {
                 JSONArray reader=new JSONArray(articles);
+
+
                 for(int i=0;i<reader.length();i++){
                     JSONObject elements=reader.getJSONObject(i);
 
@@ -203,6 +205,7 @@ public class CommonListingFragment extends Fragment {
             } catch (JSONException e) {
 
                 e.printStackTrace();
+                Log.d("article_json_error",e.toString());
             }
 
 //            CustomAdapter custom_adapter=new CustomAdapter();
@@ -268,7 +271,8 @@ public class CommonListingFragment extends Fragment {
         // Inflate the layout for this fragment
        View view=inflater.inflate(R.layout.fragment_common_listing, container, false);
        this.fragment_view=view;
-       new ArticlesFetcher().execute("http://srinivasulurao.com/mobile-api/php");
+       String page=(this.articles[mParam1]!=null)?this.articles[mParam1]:"php";
+       new ArticlesFetcher().execute("http://srinivasulurao.com/mobile-api/html"); //dynamically change the url.
        return view;
 
     }

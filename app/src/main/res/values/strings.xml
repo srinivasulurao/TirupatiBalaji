@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tirupati Balaji</string>
+    <string name="app_name">Full Stack</string>
     <string name="action_settings">Settings</string>
     <string name="server">http://srinivasulurao.com</string>
     <string name="mobile_api">http://srinivasulurao.com/mobile-api</string>

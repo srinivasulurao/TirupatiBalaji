@@ -47,7 +47,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:padding="10dip"
-        android:text="srini"
+        android:text="srinivasulu"
         android:typeface="sans" />
 
     <TextView
@@ -71,7 +71,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:padding="12dip"
-        android:text="srini"
+        android:text="ATG2dfPQ"
         android:textSize="14sp" />
 
     <Button
